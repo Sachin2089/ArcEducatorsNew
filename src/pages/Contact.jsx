@@ -25,8 +25,7 @@ function Contact() {
     e.preventDefault();
     // Send email to arceducators@gmail.com
     const emailData = {
-      to: "arceducators@gmail.com",
-      subject: "Contact Form Submission",
+      to: import.meta.env.MAIL_TO,
       body: `
         Name: ${formData.name}
         Email: ${formData.email}
@@ -70,7 +69,7 @@ function Contact() {
     
     // Send Axios request to save email in the backend
     try {
-      const subscriptionToast = toast.loading('Subscribing...');
+      const subscriptionToast = toast.loading('Subscribing....');
       await axios.post(baseUrl, subsFormData);
       console.log('Email saved in backend successfully');
       // Reset form field
